@@ -502,7 +502,7 @@ function renderWeekly(){
   document.getElementById('w-avg').textContent=scores.length?avg+'%':'--';
   document.getElementById('w-best').textContent=scores.length?Math.max(...scores)+'%':'--';
   document.getElementById('w-hits').textContent=scores.filter(s=>s>=80).length;
-  document.getElementById('w-streak').textContent=streak()+'d';
+  document.getElementById('w-streak').textContent=streak()+'d';document.getElementById('d-streak').textContent=streak()+'d';d';
   if(scores.length){const gr=getGrade(avg);document.getElementById('week-grade').textContent=gr.g;document.getElementById('week-grade').className='grade-badge '+gr.cls;document.getElementById('grade-desc').textContent=gr.desc;}
   else{document.getElementById('week-grade').textContent='--';document.getElementById('grade-desc').textContent='Complete some tasks to get your grade';}
   if(wc)wc.destroy();
