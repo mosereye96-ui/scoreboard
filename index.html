@@ -370,7 +370,9 @@ const DEFAULT=[{n:'Morning workout',t:'6:00 AM',h24:6},{n:'Review leads & pipeli
 
 function load(){try{return JSON.parse(localStorage.getItem('inflow_v2')||'null');}catch(e){return null;}}
 function save(){try{localStorage.setItem('inflow_v2',JSON.stringify(state));}catch(e){}}
-let state=load()||{history:{},tasks:[],defs:DEFAULT,dark:false,notif:false,reminderTime:'08:00',milestones:{}};
+let oldState=null;try{oldState=JSON.parse(localStorage.getItem('inflow_v1')||localStorage.getItem('sb_v10')||localStorage.getItem('sb_v11')||'null');}catch(e){}
+let state=load()||oldState||{history:{},tasks:[],defs:DEFAULT,dark:false,notif:false,reminderTime:'08:00',milestones:{}};
+if(state&&!localStorage.getItem('inflow_v2'))save();
 if(!state.defs)state.defs=DEFAULT;
 if(!state.tasks||state.tasks.length!==state.defs.length)state.tasks=new Array(state.defs.length).fill(false);
 if(!state.milestones)state.milestones={};
